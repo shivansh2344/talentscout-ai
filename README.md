@@ -2,15 +2,16 @@
 
 ## AI/ML Intern Assignment
 
-*An intelligent, context-aware hiring assistant chatbot built using Python, Streamlit, and Large Language Models (LLMs) to automate the initial screening of candidates for technical roles.*
+*TalentScout is an intelligent, context-aware hiring assistant chatbot built using Python, Streamlit, and Large Language Models (LLMs) to automate the initial screening of candidates for technical roles. The assistant gathers essential candidate information and dynamically generates technical interview questions based on the candidate's declared tech stack.*
 
 ## Features
 - Professional conversational AI hiring assistant
 - Step-by-step candidate information collection
-- Dynamic technical question generation based on declared tech stack
 - Context-aware, stage-based conversation handling
+- Dynamic technical interview question generation based on tech stack
+- Input validation and fallback handling (email, phone, empty input)
 - Graceful exit and user-controlled termination
-- Input validation and fallback handling
+- **Bonus Feature:** LLM-based confidence assessment of candidate interaction
 - Secure API key management using environment variables
 - GDPR-aligned data handling (session-only, no persistence)
 
@@ -34,7 +35,7 @@ talentscout/
 
 **1. Clone the Repository**
 ```
-git clone <your-repo-link>
+git clone https://github.com/shivansh2344/talentscout-ai
 cd talentscout
 ```
 
@@ -50,7 +51,7 @@ Create a `.env` file in the project root and add:
 GROQ_API_KEY=your_api_key_here
 ```
 
-*Note: The .env file is intentionally excluded from version control for security reasons.*
+*Note: The .env file is intentionally excluded from version control for security and privacy reasons.*
 
 **4. Run the Application**
 ```
@@ -58,11 +59,12 @@ streamlit run app.py
 ```
 
 ## Prompt Design Strategy
-- A System Prompt defines the role, tone, and constraints of the hiring assistant.
-- Stage-based logic ensures that only one question is asked at a time.
-- A dynamic prompt is generated after the candidate declares their tech stack to produce relevant technical interview questions.
-- Question difficulty is adapted based on the candidate's years of experience.
-- The model is instructed not to include answers, ensuring realistic interview-style questioning.
+- A System Prompt defines the assistant's role, tone, and constraints.
+- Stage-based logic ensures only one question is asked at a time.
+- A dynamic prompt generates technical interview questions after tech stack declaration.
+- Question difficulty is adapted based on years of experience.
+- A constrained evaluator prompt is used to generate a concise confidence assessment.
+- The model is explicitly instructed not to generate answers to interview questions.
 
 ## Conversation Flow
 1. Greeting and purpose explanation
@@ -73,40 +75,41 @@ streamlit run app.py
 6. Desired Position(s)
 7. Current Location
 8. Tech Stack Declaration
-9. AI-generated Technical Questions
-10. Graceful conversation termination
+9. AI-generated Technical Interview Questions
+10. Confidence Assessment (Bonus Feature)
+11. Graceful conversation termination
 
 ## Data Privacy & GDPR Compliance
-This project follows key principles of the EU General Data Protection Regulation (GDPR):
+This project is designed in alignment with key principles of the EU General Data Protection Regulation (GDPR):
 
 - **Data Minimization:** Only essential information required for initial screening is collected.
-- **Purpose Limitation:** All data is used strictly for hiring-related screening.
-- **Storage Limitation:** Candidate data is stored only in-memory during the active session and is never persisted.
+- **Purpose Limitation:** Candidate data is used strictly for hiring-related screening.
+- **Storage Limitation:** Data is stored only in-memory during the active session and is not persisted.
 - **Security:** No personal data is logged, stored in databases, or shared with third parties.
-- **Transparency:** Users are informed about data usage at the start of the interaction.
-- **User Control:** Candidates may exit the conversation at any time, immediately ending data processing.
+- **Transparency:** Users are informed about data usage at the beginning of the interaction.
+- **User Control:** Candidates can exit at any time, immediately stopping data processing.
 
 No personal data is retained after the session ends.
 
 ## Evaluation Criteria Mapping
 
 ### Technical Proficiency
-- Context-aware hiring assistant implemented using an LLM (LLaMA 3.1).
-- Dynamic generation of technical interview questions.
-- Clean, readable, and modular Python code.
+- Context-aware hiring assistant using an LLM (LLaMA 3.1).
+- Dynamic technical question generation based on candidate tech stack.
+- Clean, readable, and maintainable Python code.
 
 ### Problem-Solving & Critical Thinking
-- Stage-based conversation control to maintain coherence.
-- Prompt engineering to guide LLM behavior.
-- Fallback mechanisms for invalid or unexpected inputs.
+- Stage-based conversation flow to maintain coherence.
+- Prompt engineering for controlled LLM behavior.
+- Robust fallback handling for invalid or unexpected inputs.
 
 ### User Interface & Experience
 - Streamlit-based chat interface.
-- Simple, intuitive, and professional UI tailored for hiring use cases.
+- Professional, intuitive UI tailored for hiring scenarios.
 
 ### Documentation & Presentation
-- Comprehensive documentation covering setup, usage, architecture, and design decisions.
-- Explicit explanation of prompt strategy and data privacy practices.
+- Comprehensive documentation covering setup, usage, and design decisions.
+- Clear explanation of prompt strategy, privacy, and ethical AI considerations.
 
 ## Example Tech Stack Input
 ```
@@ -114,14 +117,14 @@ Python, Django, SQL
 ```
 
 ## Future Enhancements
-- Sentiment analysis to assess candidate confidence
 - Multilingual support
+- Answer evaluation and scoring
 - Persistent encrypted storage (optional)
-- Enhanced UI styling and analytics dashboard
+- Advanced analytics and recruiter dashboard
 
 ## Author
 **Shivansh Garg**  
 AI/ML Intern Assignment
 
 *Final Note for Evaluators:*  
-This project emphasizes responsible AI usage, prompt engineering, and context-aware interaction design, demonstrating practical application of Large Language Models in real-world hiring scenarios.
+This project emphasizes responsible AI usage, prompt engineering, and context-aware interaction design, demonstrating practical application of Large Language Models in real-world hiring workflows.
